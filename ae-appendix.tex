@@ -1,0 +1,62 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This part is included to make the appendix compilable as a standalone document.
+\documentclass{article}
+\usepackage{hyperref}
+\hypersetup{colorlinks = true,linkcolor = blue}
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+\section{Artifact Appendix}
+
+\subsection*{Abstract}
+
+% {\em Obligatory. Provide a short description of your artifact.}
+
+The artifact evaluation of DuVisor contains two parts: the security evaluation and the performance evaluation.
+For security evaluation, we evaluate representative CVEs in the DuVisor on the QEMU-emulated RISC-V platform.
+For performance evaluation, we measure the performance of various microbenchmarks and application benchmarks on native, DuVisor, vanilla KVM and optimized KVM using the cycle-accurate FireSim platform.
+
+\subsection*{Scope}
+
+% {\em Obligatory. Explain what claims the artifact allows to validate and for what purposes it can be used.}
+
+\noindent\textbf{Security Evaluation:} DuVisor is able to prevent host kernel from crashing even if the user-level VM-plane is attacked. As mentioned in the Table 6 of our paper, this artifact emulates 6 representative KVM CVEs and evaluates their impact on the system. The results can show that these CVEs could crash DuVisor itself, but the host kernel can continue to execute other programs (including DuVisor VMs) normally.
+
+\noindent\textbf{Performance Evaluation:} DuVisor achieves higher security while also maintains comparable performance to the optimized KVM (i.e., KVM-OPT in our paper). As shown in Figure 7-10 of our paper, this artifact compares various benchmarks between DuVisor and KVM, and also evaluates the impact of DV-ext hardware extension KVM. The results can show that DuVisor performs good and DV-ext has little impact on existing KVM.
+
+\subsection*{Contents}
+
+% {\em Obligatory. Explain the contents of the artifact.}
+
+\begin{itemize}
+    \item \textbf{Run-time environment:} FireSim cycle-accurate FPGA platform based on AWS EC2 instances (two C5 and one F1)
+    \item \textbf{Hardware:} QEMU (security AE) and RocketChip (performance AE)
+    \item \textbf{Software:} OpenSBI, Linux, QEMU, DuVisor, related benchmarks
+    \item \textbf{Metrics:} Benchmark results, usually latency and throughput
+    \item \textbf{Estimated time:} about 20 hours with pre-built software images
+    \item \textbf{Available:} \url{https://github.com/IPADS-DuVisor/ae-guide/tree/main}
+\end{itemize}
+
+\subsection*{Hosting}
+
+% {\em Obligatory. Explain how to obtain the artifact. Be specific. If you host the artifact on GitHub, please mention the name of the branch and commit version. You might also want to consider hosting your repository on a platform like Zenodo, which assigns a unique DOI and is integrated \href{https://guides.github.com/activities/citable-code/}{well with GitHub}.}
+
+The artifacts are available on the GitHub, please refer to the main branch of this guide:
+\url{https://github.com/IPADS-DuVisor/ae-guide/tree/main}
+
+\subsection*{Requirements}
+
+% {\em Optional. Explain any special hardware or software requirements, or state the platform on which the artifact has been developed and tested. You can omit this section if your artifact does not have any specific software or hardware requirements.}
+
+Because the FireSim platform relies on special AWS FPGA (F1) instances, requiring multiple machines and complicated environment configurations. To simplify the AE procedure, we provide pre-configured AWS instances for the reviewers. Please send your public keys to us through HotCRP.
+
+% \subsection*{\ldots{}}
+
+% {\em Optional. Below the sections above, you can add any number of additional sections that are specific to your artifact.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This part is included to make the appendix compilable as a standalone document.
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
