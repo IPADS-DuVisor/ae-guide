@@ -1,8 +1,16 @@
-# Security Evaluation for DuVisor
+# Security Evaluation Guide
 
-DuVisor is able to prevent host kernel from crashing even if the user-level virtualization module is attacked. We have tested and emulated the following CVEs: they would make DuVisor crash, but the host kernel can continue to execute other programs (including DuVisor VM) normally.
+DuVisor is able to prevent host kernel from crashing even if the user-level virtualization module is attacked.
+As mentioned in the **Table 6** of our paper, we have tested and emulated the following CVEs: they could crash DuVisor itself, but the host kernel can continue to execute other programs (including DuVisor VMs) normally.
 
-First, clone this repository:
+This guide shows how to evaluate the security of DuVisor by simulating representative KVM CVEs on it.
+
+<!--ts-->
+<!--te-->
+
+## Prerequisite and Building
+
+First, clone the open-sourced DuVisor repository:
 
 ```bash
 git clone https://github.com/IPADS-DuVisor/DuVisor -b security-ae
