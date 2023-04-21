@@ -1,4 +1,4 @@
-# Guide For Building From Source
+# Build-From-Source Guide
 
 To simplify the AE procedure and reduce the total time cost, we have provided pre-built binaries (e.g., FPGA/Linux/DuVisor/QEMU images) for AE in the `firesim_scripts` repository.
 
