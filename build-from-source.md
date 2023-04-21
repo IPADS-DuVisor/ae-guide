@@ -7,6 +7,25 @@ But we also provide this guide for those who would like to build from source. Th
 Note: it may take a long time to build from source, especially for the Rocket-Chip image (< 12 hours).
 
 <!--ts-->
+* [Build-From-Source Guide](#build-from-source-guide)
+   * [Prerequisite](#prerequisite)
+      * [Source RISC-V and FireSim Toolchains](#source-risc-v-and-firesim-toolchains)
+      * [Copy Pre-defined Configurations](#copy-pre-defined-configurations)
+      * [Post-building Operations](#post-building-operations)
+   * [OpenSBI](#opensbi)
+   * [KVM host Linux](#kvm-host-linux)
+   * [DuVisor host Linux](#duvisor-host-linux)
+   * [Guest Linux for KVM](#guest-linux-for-kvm)
+   * [Guest Linux for DuVisor](#guest-linux-for-duvisor)
+   * [Guest Kernel Module](#guest-kernel-module)
+   * [DuVisor](#duvisor)
+   * [QEMU](#qemu)
+   * [RocketChip](#rocketchip)
+      * [Prepare environment](#prepare-environment)
+      * [Specify hardware name for firesim build](#specify-hardware-name-for-firesim-build)
+      * [Run build scripts](#run-build-scripts)
+      * [Get agfi from build log](#get-agfi-from-build-log)
+      * [Build hardware with no-pmp feature](#build-hardware-with-no-pmp-feature)
 <!--te-->
 
 ## Prerequisite
