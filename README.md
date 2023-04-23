@@ -12,7 +12,7 @@ The AE of DuVisor contains 2 parts: **Security Evaluation** and **Performance Ev
       * [Step 1: Clone Repositories](#step-1-clone-repositories)
       * [Step 2: Setup Tests](#step-2-setup-tests)
       * [Step 3: Automated Testing (Estimated 20 Hours)](#step-3-automated-testing-estimated-20-hours)
-      * [Step 4: Generate Figures (TODO by JCH)](#step-4-generate-figures-todo-by-jch)
+      * [Step 4: Generate Figures](#step-4-generate-figures)
 <!--te-->
 
 ## Security Evaluation
@@ -180,4 +180,10 @@ rm log/*
 ./auto-test.sh
 ```
 
-### Step 4: Generate Figures (TODO by JCH)
+### Step 4: Generate Figures
+```bash
+cd ~/firesim
+./data_wraggle.sh
+```
+After above procedure, you can check stat data by `./show_stat.sh` or check figures in `fig/`.
+Since some tests may need to retry multiple times(eg. vipi testing), we recommend you to use `show_csv.py` to watch raw data and use `show_stat.sh` to watch statistics data.
