@@ -81,8 +81,8 @@ This step setups the tests for reproducing figure 7-10 of this paper.
 In this step, you would create a test configuration file and do some other preparations. 
 
 ```bash
-# Create /tmp/seq from template
-cp ~/firesim/example.seq /tmp/seq 
+# Create /tmp/cmd-seq from template
+cp ~/firesim/example.seq /tmp/cmd-seq 
 # The *fig* directory is used to put all the figures
 mkdir -p fig
 ```
@@ -227,4 +227,4 @@ cd ~/firesim && mkdir -p ./fig
 ```
 
 After above procedure, you can check stat data by `./show_stat.sh` or check figures in `fig/`.
-Since some experiments may need to retry multiple times (e.g. vipi experiments), we recommend you to use `show_csv.py` to watch raw data and use `show_stat.sh` to watch statistics data. If an experiment encounters unexpected errors, please refill the `/tmp/seq` with this experiment to re-run it.
+Since some experiments may need to retry multiple times (e.g. vipi experiments), we recommend you to use `show_csv.py` to watch raw data and use `show_stat.sh` to watch statistics data. If an experiment encounters unexpected errors, please refill the `/tmp/cmd-seq` with this experiment to re-run it.
