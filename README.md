@@ -85,7 +85,6 @@ cp ~/firesim/example.seq /tmp/seq # create /tmp/seq from template
 mkdir -p fig # fig directory is used to put all the figures
 ```
 
-In this step, you would create a test configuration file with example given in below.
 Explanation of this example file is as follow. Each non-empty line represents either an experiment or a comment.
 
 * `#` means line comment.
