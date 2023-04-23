@@ -71,7 +71,7 @@ git clone https://github.com/IPADS-DuVisor/ae-aws-scripts.git ~/aws-scripts
 # We only provide the pem file for reviewers for security reason.
 
 # Test scripts and pre-built images
-git clone https://ipads.se.sjtu.edu.cn:1312/jich/firesim_scripts.git -b master ~/firesim
+git clone https://github.com/IPADS-DuVisor/ae-firesim-scripts.git ~/firesim
 ```
 
 ### Step 2: Setup Tests
