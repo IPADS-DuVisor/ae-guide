@@ -149,7 +149,7 @@ Explanation of this `example.seq` file is as follow. Each non-empty line represe
   * The first token is fixed as `kvm` and means this is tested on KVM.
   * The second token refers to vCPU number.
   * The third token is fixed as `fig9`.
-  * The fourth token refers to machine type. `dv` refers to KVM-DVext and `vanillab` refers to KVM.
+  * The fourth token refers to machine type. `dv` refers to KVM-DVext and `vanilla` refers to KVM.
 * The next part is `fig10a`, which is tests for figure 10a. There are four tokens per line.
   * <details><summary>Content</summary><p>
   
