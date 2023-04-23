@@ -66,7 +66,8 @@ You would clone two repositories:
 
 
 ```bash
-# Scripts for connecting to master
+# Scripts for connecting to master. A firesim.pem file is required to access AWS instances.
+# We only provide the pem file for reviewers for security reason.
 git clone https://ipads.se.sjtu.edu.cn:1312/jich/aws-scripts.git -b master ~/aws-scripts
 chmod 400 ~/aws-scripts/west/firesim.pem
 
@@ -84,7 +85,9 @@ cp ~/firesim/example.seq /tmp/seq # create /tmp/seq from template
 mkdir -p fig # fig directory is used to put all the figures
 ```
 
-Description of sequence file:
+In this step, you would create a test configuration file with example given in below.
+Explanation of this example file is as follow. Each non-empty line represents either an experiment or a comment.
+
 * `#` means line comment.
 * The first part is `fig8 app`, which is tests for figure 8. There are two tokens per line.
   * The first token refers to machine type. `kvm` refers to KVM guest VM, `native` refers to bare-metal machine, and `ulh` refers to DuVisor guest VM.
@@ -123,9 +126,11 @@ rm log/*
 ```
 
 ### Step 4: Generate Figures
+
 ```bash
-cd ~/firesim
+cd ~/firesim && mkdir -p ./fig
 ./data_wraggle.sh
 ```
+
 After above procedure, you can check stat data by `./show_stat.sh` or check figures in `fig/`.
-Since some tests may need to retry multiple times(eg. vipi testing), we recommend you to use `show_csv.py` to watch raw data and use `show_stat.sh` to watch statistics data.
+Since some experiments may need to retry multiple times (e.g. vipi experiments), we recommend you to use `show_csv.py` to watch raw data and use `show_stat.sh` to watch statistics data. If an experiment encounters unexpected errors, please refill the `/tmp/seq` with this experiment to re-run it.
