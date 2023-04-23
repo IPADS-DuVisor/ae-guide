@@ -18,6 +18,11 @@ This guide shows how to evaluate the security of DuVisor by simulating represent
 
 ## Prerequisite and Building
 
+Hardware requirements:
+
+* CPU: Commodity CPU with >= 4 cores which is able to run qemu. Architecture is not limitted.
+* Memory: >8GB
+
 First, clone the open-sourced DuVisor repository:
 
 ```bash
@@ -26,12 +31,26 @@ cd DuVisor
 git submodule update --init --recursive
 ```
 
-Other steps for preparation of the execution environment for security evaluation for DuVisor are the same as [Prerequisite](https://github.com/IPADS-DuVisor/DuVisor/tree/main#prerequisite) and [Build DuVisor for QEMU](https://github.com/IPADS-DuVisor/DuVisor/tree/main#build-duvisor-for-qemu).
+Other steps for preparation of the execution environment for security evaluation for DuVisor are the same as [Prerequisite](https://github.com/IPADS-DuVisor/DuVisor/tree/security-ae#prerequisite) and [Build DuVisor for QEMU](https://github.com/IPADS-DuVisor/DuVisor/tree/security-ae#build-duvisor-for-qemu).
 
-All the following CVEs can be tested without rebooting or shutting down the host kernel. Therefore, you may boot the host kernel only once:
+All the following CVEs can be tested without rebooting or shutting down the qemu host VM. Therefore, you may boot the host VM only once.
+
+If you use docker build in last step:
 
 ```bash
-# Boot host kernel
+# pwd is root of the DuVisor repo
+# Boot host VM
+./scripts/build/docker_exec_wrapper.sh ./scripts/run/example-boot.sh
+
+# Enter the directory storing the scripts
+cd duvisor
+```
+
+If you use native build in last step:
+
+```bash
+# pwd is root of the DuVisor repo
+# Boot host VM
 ./scripts/run/example-boot.sh
 
 # Enter the directory storing the scripts
