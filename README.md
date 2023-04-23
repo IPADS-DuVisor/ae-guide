@@ -23,15 +23,15 @@ The security AE reproduces table 6 of the paper. Please refer to [security-evalu
 
 The performance AE (the following content of this guide) reproduces figure 7-10 of the paper.
 
-The performance AE is push-button style. We provided configured environment and all pre-built images for simplicity. If you want to build from source, please refer to [build-from-source.md](./build-from-source.md).
+The performance AE is **push-button** style. We provided a configured environment and all pre-built images for simplicity. If you want to build from source, please refer to [build-from-source.md](./build-from-source.md).
 
 The performance AE involves three machines.
-* The client machine. It serves as the monitor of the experiments. You operate on this machine to connect with the master machine. Evaluation results would be sent to this machine.
-* The master machine. It runs firesim and connects with the worker FPGA.
-* The worker machine. It is the FPGA node and experiments run on this FPGA.
+* The client machine, which serves as the monitor of the experiments. You operate on this machine to connect with the master machine. Evaluation results would be sent to this machine.
+* The master machine, which runs firesim and connects with the worker FPGA.
+* The worker machine, which is the FPGA node and experiments run on this FPGA.
 
 In our setup, the client machine is a T3 instance, the master machine is a C5 instance and the worker machine is an F1 instance.
-The relation graph of the three machines is like:
+The relation graph of the three machines could be depicted as:
 
 ```javascript
 Client(Monitor) <====> Master(Firesim) <====> Worker(FPGA)
@@ -59,7 +59,7 @@ aws configure
 
 This step would clone repositories needed for AE.
 
-You would clone two repositories:
+You should clone two repositories:
 
 * `aws-scripts`. This repository has scripts for connecting to the master machine.
 * `firesim_scripts`. This repository has scripts for running tests and pre-built images.
@@ -149,7 +149,7 @@ Explanation of this `example.seq` file is as follow. Each non-empty line represe
   * The first token is fixed as `kvm` and means this is tested on KVM.
   * The second token refers to vCPU number.
   * The third token is fixed as `fig9`.
-  * The fourth token refers to machine type. `dv` refers to KVM-DVext and `vanillab` refers to KVM.
+  * The fourth token refers to machine type. `dv` refers to KVM-DVext and `vanilla` refers to KVM.
 * The next part is `fig10a`, which is tests for figure 10a. There are four tokens per line.
   * <details><summary>Content</summary><p>
   
