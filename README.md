@@ -80,7 +80,9 @@ git clone https://ipads.se.sjtu.edu.cn:1312/jich/firesim_scripts.git -b master ~
 
 This step setups the tests for reproducing figure 7-10 of this paper.
 
-In this step, you would create a test configuration file with content given in below. Description of this file:
+In this step, you would create a test configuration file with example given in below.
+Each non-empty line represents either an experiment or a comment.
+Explanation of this example file:
 
 * `#` means line comment.
 * The first part is `fig8 app`, which is tests for figure 8. There are two tokens per line.
@@ -133,8 +135,12 @@ vanilla-breakdown vipi
 vanilla-breakdown vplic
 
 # fig9
+kvm 1 fig9 dv
+kvm 1 fig9 vanilla
+kvm 2 fig9 dv
+kvm 2 fig9 vanilla
 kvm 4 fig9 dv
-kvm 4 fig9 vanillab 
+kvm 4 fig9 vanilla
 
 # fig10
 kvm 4 fig10 512
@@ -156,7 +162,7 @@ ulh 1 fig10b pmp frd
 ulh 1 fig10b pmp fwr
 ulh 1 fig10b pmp fcp
 ulh 1 fig10b pmp bzero
-# ulh 1 fig10b pmp bcopy # timeout
+ulh 1 fig10b pmp bcopy
 ulh 1 fig10b nopmp cp
 ulh 1 fig10b nopmp wr
 ulh 1 fig10b nopmp rd
@@ -165,7 +171,7 @@ ulh 1 fig10b nopmp frd
 ulh 1 fig10b nopmp fwr
 ulh 1 fig10b nopmp fcp
 ulh 1 fig10b nopmp bzero
-# ulh 1 fig10b nopmp bcopy
+ulh 1 fig10b nopmp bcopy
 ```
 
 
@@ -184,9 +190,9 @@ rm log/*
 ### Step 4: Generate Figures
 
 ```bash
-cd ~/firesim
+cd ~/firesim && mkdir -p ./fig
 ./data_wraggle.sh
 ```
 
 After above procedure, you can check stat data by `./show_stat.sh` or check figures in `fig/`.
-Since some tests may need to retry multiple times(eg. vipi experiments), we recommend you to use `show_csv.py` to watch raw data and use `show_stat.sh` to watch statistics data.
+Since some experiments may need to retry multiple times (e.g. vipi experiments), we recommend you to use `show_csv.py` to watch raw data and use `show_stat.sh` to watch statistics data. If an experiment encounters unexpected errors, please refill the `/tmp/seq` with this experiment to re-run it.
