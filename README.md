@@ -64,12 +64,15 @@ You would clone two repositories:
 * `aws-scripts`. This repository has scripts for connecting to the master machine.
 * `firesim_scripts`. This repository has scripts for running tests and pre-built images.
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d770efa (update README)
 ```bash
-# Scripts for connecting to master. A firesim.pem file is required to access AWS instances.
+# Scripts for connecting to master. 
+git clone https://github.com/IPADS-DuVisor/ae-aws-scripts.git ~/aws-scripts
+# A pem file is required under ~/aws-scripts/west/firesim.pem to access AWS instances.
 # We only provide the pem file for reviewers for security reason.
-git clone https://ipads.se.sjtu.edu.cn:1312/jich/aws-scripts.git -b master ~/aws-scripts
-chmod 400 ~/aws-scripts/west/firesim.pem
 
 # Test scripts and pre-built images
 git clone https://ipads.se.sjtu.edu.cn:1312/jich/firesim_scripts.git -b master ~/firesim
@@ -119,6 +122,7 @@ This step runs tests with an integrated push-button script.
 `tmux` is recommended in case of `auto-test.sh` interruption due to network failure.
 
 ```bash
+# tmux new -s duvisor-ae
 cd ~/firesim
 rm log/*
 ./auto-test.sh
