@@ -5,6 +5,8 @@ As mentioned in the **Table 6** of our paper, we have tested and emulated the fo
 
 This guide shows how to evaluate the security of DuVisor by simulating representative KVM CVEs on it.
 
+The security AE would use the [open-sourced pure-rust version of DuVisor](https://github.com/IPADS-DuVisor/DuVisor/tree/security-ae), while the performance AE uses the same version of code as when the paper was submitted. For detailed information about this, please refer to the paper.
+
 <!--ts-->
 * [Security Evaluation Guide](#security-evaluation-guide)
    * [Prerequisite and Building](#prerequisite-and-building)
