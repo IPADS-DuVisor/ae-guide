@@ -64,10 +64,6 @@ You would clone two repositories:
 * `aws-scripts`. This repository has scripts for connecting to the master machine.
 * `firesim_scripts`. This repository has scripts for running tests and pre-built images.
 
-<<<<<<< HEAD
-
-=======
->>>>>>> d770efa (update README)
 ```bash
 # Scripts for connecting to master. 
 git clone https://github.com/IPADS-DuVisor/ae-aws-scripts.git ~/aws-scripts
@@ -83,31 +79,126 @@ git clone https://ipads.se.sjtu.edu.cn:1312/jich/firesim_scripts.git -b master ~
 This step setups the tests for reproducing figure 7-10 of this paper.
 
 In this step, you would create a test configuration file and do some other preparations. 
+
 ```bash
-cp ~/firesim/example.seq /tmp/seq # create /tmp/seq from template
-mkdir -p fig # fig directory is used to put all the figures
+# Create /tmp/seq from template
+cp ~/firesim/example.seq /tmp/seq 
+# The *fig* directory is used to put all the figures
+mkdir -p fig
 ```
 
-Explanation of this example file is as follow. Each non-empty line represents either an experiment or a comment.
+Explanation of this `example.seq` file is as follow. Each non-empty line represents either an experiment or a comment.
 
 * `#` means line comment.
 * The first part is `fig8 app`, which is tests for figure 8. There are two tokens per line.
+  * <details><summary>Content</summary><p>
+  
+      ```txt
+      # fig8 app
+      kvm 1
+      kvm 2
+      kvm 4
+      native 1
+      native 2
+      native 4
+      ulh 1
+      ulh 2
+      ulh 4
+      ```
+  
+  </p></details>
+
   * The first token refers to machine type. `kvm` refers to KVM guest VM, `native` refers to bare-metal machine, and `ulh` refers to DuVisor guest VM.
   * The second token refers to CPU/vCPU number.
 * The next part is `fig7 microbenchmark`, which is tests for figure 7. There are two tokens per line.
+  * <details><summary>Content</summary><p>
+  
+      ```txt
+      # fig7 microbenchmark
+      breakdown hypercall
+      breakdown s2pf
+      breakdown mmio
+      ub hypercall
+      ub s2pf
+      ub mmio
+      breakdown vipi
+      vanilla-breakdown vipi
+      breakdown vplic
+      vanilla-breakdown vplic
+      ```
+  
+  </p></details>
+
   * The first token refers to machine type. `breakdown` refers to KVM/KVM-opt guest VM, `ub` refers to DuVisor guest VM, and `vanilla-breakdown` refers to KVM guest VM. Note: KVM-opt and DuVisor spend the same cycles on either vipi or vplic tests due to pure-hardware exitless interrupt virtualization.
   * The second token refers to microbenchmark type.
 * The next part is `fig9`, which is tests for figure 9. There are four tokens per line.
+  * <details><summary>Content</summary><p>
+  
+      ```txt
+      # fig9
+      kvm 1 fig9 dv
+      kvm 1 fig9 vanilla
+      kvm 2 fig9 dv
+      kvm 2 fig9 vanilla
+      kvm 4 fig9 dv
+      kvm 4 fig9 vanilla
+      ```
+  
+  </p></details>
+
   * The first token is fixed as `kvm` and means this is tested on KVM.
   * The second token refers to vCPU number.
   * The third token is fixed as `fig9`.
   * The fourth token refers to machine type. `dv` refers to KVM-DVext and `vanillab` refers to KVM.
-* The next part is `fig10`, which is tests for figure 10a. There are four tokens per line.
+* The next part is `fig10a`, which is tests for figure 10a. There are four tokens per line.
+  * <details><summary>Content</summary><p>
+  
+      ```txt
+      # fig10a
+      kvm 4 fig10 512
+      kvm 4 fig10 1024
+      kvm 4 fig10 1536
+      kvm 4 fig10 2048
+
+      ulh 4 fig10 512
+      ulh 4 fig10 1024
+      ulh 4 fig10 1536
+      ulh 4 fig10 2048
+      ```
+  
+  </p></details>
+
   * The first token refers to machine type. `kvm` refers to KVM guest VM, and `ulh` refers to DuVisor guest VM.
   * The second token refers to vCPU number.
   * The third token is fixed as `fig10`.
   * The fourth token refers to memory size with MB unit.
 * The last part is `fig10b`, which is tests fot figure 10b. There are five tokens per line.
+  * <details><summary>Content</summary><p>
+  
+      ```txt
+      # fig10b
+      ulh 1 fig10b pmp cp
+      ulh 1 fig10b pmp wr
+      ulh 1 fig10b pmp rd
+      ulh 1 fig10b pmp rdwr
+      ulh 1 fig10b pmp frd
+      ulh 1 fig10b pmp fwr
+      ulh 1 fig10b pmp fcp
+      ulh 1 fig10b pmp bzero
+      ulh 1 fig10b pmp bcopy
+      ulh 1 fig10b nopmp cp
+      ulh 1 fig10b nopmp wr
+      ulh 1 fig10b nopmp rd
+      ulh 1 fig10b nopmp rdwr
+      ulh 1 fig10b nopmp frd
+      ulh 1 fig10b nopmp fwr
+      ulh 1 fig10b nopmp fcp
+      ulh 1 fig10b nopmp bzero
+      ulh 1 fig10b nopmp bcopy
+      ```
+  
+  </p></details>
+
   * The first token is fixed as `ulh` and means this is tests of DuVisor.
   * The second token is fixed as `1` refers to vCPU number.
   * The third token is fixed as `fig10b`.
