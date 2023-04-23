@@ -67,7 +67,8 @@ You would clone two repositories:
 **TODO: remove pem file!**
 
 ```bash
-# Scripts for connecting to master
+# Scripts for connecting to master. A firesim.pem file is required to access AWS instances.
+# We only provide the pem file for reviewers for security reason.
 git clone https://ipads.se.sjtu.edu.cn:1312/jich/aws-scripts.git -b master ~/aws-scripts
 chmod 400 ~/aws-scripts/west/firesim.pem
 
@@ -181,9 +182,11 @@ rm log/*
 ```
 
 ### Step 4: Generate Figures
+
 ```bash
 cd ~/firesim
 ./data_wraggle.sh
 ```
+
 After above procedure, you can check stat data by `./show_stat.sh` or check figures in `fig/`.
-Since some tests may need to retry multiple times(eg. vipi testing), we recommend you to use `show_csv.py` to watch raw data and use `show_stat.sh` to watch statistics data.
+Since some tests may need to retry multiple times(eg. vipi experiments), we recommend you to use `show_csv.py` to watch raw data and use `show_stat.sh` to watch statistics data.
