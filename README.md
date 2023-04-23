@@ -61,8 +61,8 @@ This step would clone repositories needed for AE.
 
 You should clone two repositories:
 
-* `aws-scripts`. This repository has scripts for connecting to the master machine.
-* `firesim_scripts`. This repository has scripts for running tests and pre-built images.
+* `ae-aws-scripts`. This repository has scripts for connecting to the master machine.
+* `ae-firesim-scripts`. This repository has scripts for running tests and pre-built images.
 
 ```bash
 # Scripts for connecting to master. 
