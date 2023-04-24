@@ -215,7 +215,8 @@ This step runs tests with an integrated push-button script.
 ```bash
 # tmux new -s duvisor-ae
 cd ~/firesim
-rm log/*
+mkdir -p ./log
+rm -f ./log/*
 ./auto-test.sh
 ```
 
