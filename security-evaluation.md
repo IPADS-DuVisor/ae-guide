@@ -42,7 +42,7 @@ If you use docker build in last step:
 ```bash
 # pwd is root of the DuVisor repo
 # Boot host VM
-./scripts/build/docker_exec_wrapper.sh ./scripts/run/example-boot.sh
+./scripts/build/docker_exec_wrapper.sh ./scripts/run/example_boot.sh
 
 # Enter the directory storing the scripts
 cd duvisor
@@ -53,7 +53,7 @@ If you use native build in last step:
 ```bash
 # pwd is root of the DuVisor repo
 # Boot host VM
-./scripts/run/example-boot.sh
+./scripts/run/example_boot.sh
 
 # Enter the directory storing the scripts
 cd duvisor
