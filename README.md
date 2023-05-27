@@ -37,6 +37,10 @@ The relation graph of the three machines could be depicted as:
 Client(Monitor) <====> Master(Firesim) <====> Worker(FPGA)
 ```
 
+> Note: The users should expect that AE experiments can reflect the performance comparisons between DuVisor and KVM/KVM-OPT that are consistent with our paper's evaluation. But the users should **NOT** expect these experiments to generate exactly the same raw results as the paper.
+> 
+> Rationale: As the simulation time on the FireSim platform is very long (1 second of simulation time on FireSim is equivalent to several minutes in real-world time), we managed to limit the overall simulation time to within one day in order to meet a reasonable time constraint, while ensuring that results are **relatively** stable. However, *relatively* does not mean *always*. Therefore, if some of the results appear very unstable or weird, we kindly request the users to repeat the experiments again. 
+
 The following is the quick start of the performance AE. All steps should be done on the client machine.
 
 ### Step 0: Configure AWS Tools
@@ -71,7 +75,9 @@ git clone https://github.com/IPADS-DuVisor/ae-aws-scripts.git ~/aws-scripts
 # We only provide the pem file for reviewers for security reason.
 
 # Test scripts and pre-built images
-git clone https://github.com/IPADS-DuVisor/ae-firesim-scripts.git ~/firesim
+export AE_ROOT=/path/to/your/directory
+cd $AE_ROOT
+git clone https://github.com/IPADS-DuVisor/ae-firesim-scripts.git ./firesim
 ```
 
 ### Step 2: Setup Tests
@@ -82,7 +88,7 @@ In this step, you would create a test configuration file and do some other prepa
 
 ```bash
 # Create /tmp/cmd-seq from template
-cp ~/firesim/example.seq /tmp/cmd-seq 
+cp $AE_ROOT/firesim/example.seq /tmp/cmd-seq 
 # The *fig* directory is used to put all the figures
 mkdir -p fig
 ```
@@ -214,7 +220,7 @@ This step runs tests with an integrated push-button script.
 
 ```bash
 # tmux new -s duvisor-ae
-cd ~/firesim
+cd $AE_ROOT/firesim
 mkdir -p ./log
 rm -f ./log/*
 ./auto-test.sh
@@ -223,7 +229,7 @@ rm -f ./log/*
 ### Step 4: Generate Figures
 
 ```bash
-cd ~/firesim && mkdir -p ./fig
+cd $AE_ROOT/firesim && mkdir -p ./fig
 ./data_wraggle.sh
 ```
 
